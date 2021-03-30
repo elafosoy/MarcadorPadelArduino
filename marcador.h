@@ -2,16 +2,8 @@
 #define MARCADOR_H
 #include "equipo.h"
 #include "juego.h"
-#include "set.h"
-
-struct Pantalla {
-  int puntosA = 0;
-  int puntosB = 0;
-  int juegosA = 0;
-  int juegosB = 0;
-  int setsA = 0;
-  int setsB = 0;
-};
+#include "set.h" 
+#include "pantalla.h"
 
 class Marcador {
   Equipo m_equipoA;
