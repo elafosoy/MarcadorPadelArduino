@@ -4,7 +4,8 @@ void Juego::setOtherJuego(Juego *otherJuego) { m_otherJuego = otherJuego; }
 
 void Juego::setOtherEquipo(Equipo *otherEquipo) { m_otherEquipo = otherEquipo; }
 
-Juego::Juego(Equipo *equipo) {
+Juego::Juego(Equipo *equipo, bool service) {
+  m_service = service;
   m_equipo = equipo;
   m_puntos = 0;
 }
@@ -34,18 +35,26 @@ int Juego::puntos() {
     m_equipo->sumaJuego(m_otherEquipo);
     clear();
     m_otherJuego->clear();
+    changeService();
   } else if (m_puntos < 40 && m_otherPuntos > 40) {
     m_equipo->sumaJuego(m_otherEquipo);
     clear();
     m_otherJuego->clear();
+    changeService();
   } else if ((m_puntos > 55) && ((m_puntos - m_otherPuntos > 15))) {
     // Cuando se ha lleado a 4 y hay que ganar de 2 puntos
     m_equipo->sumaJuego(m_otherEquipo);
     clear();
     m_otherJuego->clear();
+    changeService();
   }
 
   return m_puntos;
+}
+
+void Juego::changeService(){
+  m_service = !m_service;
+  m_otherJuego->setService(!m_service);
 }
 
 void Juego::clear() {

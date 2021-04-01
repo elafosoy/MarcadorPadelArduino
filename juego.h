@@ -8,17 +8,23 @@ class Juego {
   Juego *m_otherJuego;
   int m_puntos;
   int m_otherPuntos;
-
+  bool m_service;
+  
  public:
-  Juego(Equipo *equipo);
+  Juego(Equipo *equipo, bool service);
   void setOtherJuego(Juego *otherJuego);
 
   void suma();
   void resta();
   int puntos();
+  bool service(){return m_service;}
+  void setService(bool service) {m_service = service;}
 
   void clear();
   void setOtherEquipo(Equipo *otherEquipo);
+  
+  private:
+  void changeService();
 };
 
 #endif  // JUEGO_H

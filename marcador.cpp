@@ -1,8 +1,8 @@
 #include "marcador.h"
 
 Marcador::Marcador() {
-  m_juegoA = new Juego(&m_equipoA);
-  m_juegoB = new Juego(&m_equipoB);
+  m_juegoA = new Juego(&m_equipoA,true);
+  m_juegoB = new Juego(&m_equipoB,false);
 
   m_juegoA->setOtherEquipo(&m_equipoB);
   m_juegoB->setOtherEquipo(&m_equipoA);
@@ -31,4 +31,6 @@ void Marcador::refreshResults(Pantalla *pantalla) {
 
   pantalla->setsA = m_equipoA.totalSetsGanados();
   pantalla->setsB = m_equipoB.totalSetsGanados();
+
+  pantalla->serviceA = m_juegoA->service();
 }
